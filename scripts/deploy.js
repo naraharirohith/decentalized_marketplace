@@ -29,7 +29,7 @@
 
 const { ethers } = require('ethers');
 
-const Marketplace = artifacts.require('Marketplace2');
+const Marketplace = artifacts.require('Marketplace');
 
 async function deployContract() {
   const provider = new ethers.providers.JsonRpcProvider('http://localhost:8545');
