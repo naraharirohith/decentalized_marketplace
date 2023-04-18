@@ -6,17 +6,35 @@ import close from '../assets/close.svg'
 const Product = ({ item, provider, account, marketplace, togglePop }) => {
   const [order, setOrder] = useState(null)
   const [hasBought, setHasBought] = useState(false)
+  const [supplyId , setSupplyId] = useState(null)
+  const [isDelivered, setIsDelivered] = useState(false)
+  const [boughtAt, setBoughtAt] = useState(null)
 
   const fetchDetails = async () => {
     const events = await marketplace.queryFilter("ItemBought")
-    const orders = events.filter(
-      (event) => event.args.buyer === account && event.args.itemId.toString() === item.id.toString()
-    )
+
+    const orders = events.filter((event) => {
+      // Check if the buyer's address matches the user account
+      if (event.args.buyer !== account) {
+        return false
+      }
+      // Check if the item ID matches the required item ID
+      if (event.args.itemId.toString() !== item[0].toString()) {
+        return false
+      }
+      // If both conditions are true, return true to include the event in the filtered list
+      return true
+    })
+
+    console.log("order", orders);
 
     if (orders.length === 0) return
 
-    const order = await marketplace.orders(account, orders[0].args.orderId)
+    const order = await marketplace.productDetails(orders[0].args.itemId, orders[0].args.supplyId)
+    const supplyId = orders[0].args.supplyId
     setOrder(order)
+    setSupplyId(supplyId)
+    setIsDelivered(order.isDelivered)
   }
 
   const buyHandler = async () => {
@@ -27,11 +45,23 @@ const Product = ({ item, provider, account, marketplace, togglePop }) => {
     await transaction.wait()
 
     setHasBought(true)
+    setBoughtAt(new Date().toDateString())
+  }
+
+  const deliverHandler = async () => {
+    const signer = await provider.getSigner()
+
+    // Call the ItemDelivered function...
+    let transaction = await marketplace.connect(signer).deliverItem(item.itemId, supplyId)
+    await transaction.wait()
+
+    setIsDelivered(true)
+    console.log("Item delivered!")
   }
 
   useEffect(() => {
     fetchDetails()
-  }, [hasBought])
+  }, [hasBought, isDelivered])
 
   return (
     <div className="product">
@@ -72,22 +102,23 @@ const Product = ({ item, provider, account, marketplace, togglePop }) => {
           <p><small>Ships from</small> Amrita</p>
           <p><small>Sold by</small> Amrita</p>
 
-          {order && (
-            <div className='product__bought'>
-              Item bought on <br />
-              <strong>
-                {new Date(Number(order.time.toString() + '000')).toLocaleDateString(
-                  undefined,
-                  {
-                    weekday: 'long',
-                    hour: 'numeric',
-                    minute: 'numeric',
-                    second: 'numeric'
-                  })}
-              </strong>
-            </div>
-          )}
-        </div>
+          { order  && (
+          <div className="product__bought">
+            Item bought <br />
+            <strong>
+              { boughtAt }
+            </strong>
+            { order !== null ? (
+              <p>Item Delivered</p>
+            ) : (
+              <button className='product__buy' onClick={deliverHandler}>
+              Item Delivered
+              </button>
+            )}
+            
+          </div>
+        )}
+      </div>
 
         <button onClick={togglePop} className="product__close">
           <img src={close} alt="Close" />

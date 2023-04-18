@@ -1,22 +1,34 @@
 const { ethers } = require('ethers');
+require('dotenv').config();
 
-const Marketplace = artifacts.require('Marketplace');
+const Marketplace = require('./abis/Marketplace.json')
 const data = require('./items.json');
 
-async function deployContract() {
+async function addProducts() {
     
     // Mumbai
-    const marketplaceAddress = "0x9A8F9a1f0A17343c086b94daeF41f8b9615F2728"
-    
-    // console.log(data);
-    for(let i =0; i<9; i++) {
-        console.log(data.items[i]);
-    }
-    const provider = new ethers.providers.JsonRpcProvider('https://rpc-mumbai.maticvigil.com');
-    const signer = provider.getSigner();
+    const marketplaceAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+    const privateKey = process.env.PRIVATE_KEY
+
+    const provider = new ethers.providers.JsonRpcProvider('http://127.0.0.1:8545/')
+    const wallet = new ethers.Wallet(privateKey);
+    const signer = wallet.connect(provider);
   
     const marketplace = new ethers.Contract(marketplaceAddress, Marketplace, provider);
 
+    for(let i=0; i<9; i++) {
+      await marketplace.connect(signer).addItem(
+        data.items[i].name, 
+        data.items[i].category, 
+        data.items[i].description, 
+        data.items[i].image, 
+        data.items[i].price, 
+        data.items[i].supply
+      );
+      console.log("Item added to the marketplace with itemId - ", i);
+    }
+
+
   }
   
-  deployContract();
+  addProducts();

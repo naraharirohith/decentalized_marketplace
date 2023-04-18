@@ -40,7 +40,6 @@ function App() {
 
     setItems(items)
   }
-
   useEffect(() => {
     loadBlockchainData()
   }, [])

@@ -6,7 +6,7 @@
       "category": "shoe",
       "description": "running shoe",
       "image": "https://gateway.pinata.cloud/ipfs/Qmdrnr8VKZFzS8VuUpL7UN6uRByb3G7mHbT8H8jF1cevi5/shoe1.jpeg",
-      "price": "50000",
+      "price": "1000000000000000000",
       "supply": 5
     },
     {
@@ -15,7 +15,7 @@
       "category": "shoe",
       "description": "casual shoe",
       "image": "https://gateway.pinata.cloud/ipfs/Qmdrnr8VKZFzS8VuUpL7UN6uRByb3G7mHbT8H8jF1cevi5/shoe2.jpeg",
-      "price": "20000",
+      "price": "2000000000000000000",
       "supply": 10
     },
     {
@@ -24,7 +24,7 @@
       "category": "shoe",
       "description": "Running shoe",
       "image": "https://gateway.pinata.cloud/ipfs/Qmdrnr8VKZFzS8VuUpL7UN6uRByb3G7mHbT8H8jF1cevi5/shoe3.jpeg",
-      "price": "10000",
+      "price": "1000000000000000000",
       "supply": 24
     },
     {
@@ -33,7 +33,7 @@
       "category": "Specs",
       "description": "Cooling glasses",
       "image": "https://gateway.pinata.cloud/ipfs/Qmdrnr8VKZFzS8VuUpL7UN6uRByb3G7mHbT8H8jF1cevi5/specs1.jpeg",
-      "price": "90000",
+      "price": "3000000000000000000",
       "supply": 32
     },
     {
@@ -42,7 +42,7 @@
       "category": "Specs",
       "description": "Cooling glasses",
       "image": "https://gateway.pinata.cloud/ipfs/Qmdrnr8VKZFzS8VuUpL7UN6uRByb3G7mHbT8H8jF1cevi5/specs2.jpeg",
-      "price": "10000",
+      "price": "2000000000000000000",
       "supply": 15
     },
     {
@@ -51,7 +51,7 @@
       "category": "Specs",
       "description": "Cooling glasses",
       "image": "https://gateway.pinata.cloud/ipfs/Qmdrnr8VKZFzS8VuUpL7UN6uRByb3G7mHbT8H8jF1cevi5/specs3.jpeg",
-      "price": "30000",
+      "price": "1000000000000000000",
       "supply": 80
     },
     {
@@ -60,7 +60,7 @@
       "category": "Watch",
       "description": "Cool watch",
       "image": "https://gateway.pinata.cloud/ipfs/Qmdrnr8VKZFzS8VuUpL7UN6uRByb3G7mHbT8H8jF1cevi5/watch2.jpeg",
-      "price": "100000",
+      "price": "1200000000000000000",
       "supply": 9
     },
     {
@@ -69,7 +69,7 @@
       "category": "Watch",
       "description": "General watch",
       "image": "https://gateway.pinata.cloud/ipfs/Qmdrnr8VKZFzS8VuUpL7UN6uRByb3G7mHbT8H8jF1cevi5/watch1.jpg",
-      "price": "700000",
+      "price": "900000000000000000",
       "supply": 45
     },
     {
@@ -78,7 +78,7 @@
       "category": "Watch",
       "description": "Cool casio watch",
       "image": "https://gateway.pinata.cloud/ipfs/Qmdrnr8VKZFzS8VuUpL7UN6uRByb3G7mHbT8H8jF1cevi5/watch3.jpg",
-      "price": "900000",
+      "price": "900000000000000000",
       "supply": 45
     }
   ]

@@ -1,8 +1,6 @@
 import { ethers } from 'ethers'
 
 const Section = ({ title, items, togglePop }) => {
-    console.log(items);
-    console.log("items in section")
     return (
         <div className='cards__section'>
             <h3 id={title}>{title}</h3>
@@ -13,7 +11,7 @@ const Section = ({ title, items, togglePop }) => {
                 {items.map((item, index) => (
                     <div className='card' key={index} onClick={() => togglePop(item)}>
                         <div className='card__image'>
-                            <img src={item.imageHash} alt="Item" />
+                            <img crossOrigin="anonymous" src={item.imageHash} alt="Item" />
                         </div>
                         <div className='card__info'>
                             <h4>{item.name}</h4>
