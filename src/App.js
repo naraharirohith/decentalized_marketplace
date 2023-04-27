@@ -32,8 +32,9 @@ function App() {
     setMarketplace(marketplace)
 
     const items = []
+    const itemCount = await marketplace.itemCount();
 
-    for (var i = 0; i < 9; i++) {
+    for (var i = 0; i < itemCount; i++) {
       const item = await marketplace.items(i + 1)
       items.push(item)
     }
